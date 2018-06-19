@@ -1,10 +1,7 @@
 package ui;
 import javax.swing.JOptionPane;
-
 import domain.Account;
 import domain.MinusAccount;
-import service.*;
-import serviceImpl.*;
 /*
  비트뱅크
  기본통장(마이너스통장)
@@ -13,34 +10,29 @@ import serviceImpl.*;
  잔액 : 10000원
  생성일 : 2018년 6월10일
  * */
-enum Butt2{
-	EXIT,ACCOUNT,MINUS,DEPOSIT,WITHDRAW,MENU
+enum Butt3{
+	EXIT,ACCOUNT,MINUS,DEPOSIT,WITHDRAW
 }
 
-public class AccountMain {
+public class AccountMainOld {
 	public static void main(String[] args) {
 		Account acc=null;
-		
-		
-		AccountService service = new AccountServiceImpl();
-		Butt2[] buttons= {
-				Butt2.EXIT,Butt2.ACCOUNT,Butt2.MINUS,Butt2.DEPOSIT,Butt2.WITHDRAW,Butt2.MENU
+		Butt3[] buttons= {
+				Butt3.EXIT,Butt3.ACCOUNT,Butt3.MINUS,Butt3.DEPOSIT,Butt3.WITHDRAW
 		};
 		while(true) {
-			Butt2 select = (Butt2)JOptionPane.showInputDialog(null,"MENU","",JOptionPane.QUESTION_MESSAGE,null,
+			Butt3 select = (Butt3)JOptionPane.showInputDialog(null,"MENU","",JOptionPane.QUESTION_MESSAGE,null,
 					buttons,buttons[1]);
 			switch(select) {
 			case EXIT : return;
 			case ACCOUNT : 
-				
-				
-				//acc.setMoney(Integer.parseInt(JOptionPane.showInputDialog("입금하실 금액을 입력해주세요")));
-				//JOptionPane.showMessageDialog(null,acc.toString());
-				service.addList(service.createAccount( 
-				JOptionPane.showInputDialog("아이디를 입력하세요."),
-				JOptionPane.showInputDialog("이름을 입력하세요"),
-				JOptionPane.showInputDialog("패스워드를 입력하세요")
-				));
+				acc = new Account(
+						JOptionPane.showInputDialog("아이디를 입력하세요."),
+						JOptionPane.showInputDialog("이름을 입력하세요"),
+						JOptionPane.showInputDialog("패스워드를 입력하세요")
+						);
+				acc.setMoney(Integer.parseInt(JOptionPane.showInputDialog("입금하실 금액을 입력해주세요")));
+				JOptionPane.showMessageDialog(null,acc.toString());
 				break;
 			case MINUS : 
 				acc= new MinusAccount(
@@ -70,9 +62,6 @@ public class AccountMain {
 				}
 				
 				
-				break;
-			case MENU :
-				JOptionPane.showMessageDialog(null,service.showResult());
 				break;
 			}
 			

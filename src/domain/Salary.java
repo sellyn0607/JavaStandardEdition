@@ -1,9 +1,11 @@
 package domain;
 
 public class Salary {
-	String dept,name;
-	int sal,bonus,sum;
-
+	
+	public static final String DEPT="인턴쉽";
+	protected String dept,name;
+	protected int sal,sum,bonus;
+	
 public void setDept(String dept) {
 	this.dept=dept;
 }

@@ -21,39 +21,60 @@ public class Account {
 	public final static String WITHDRAW_FAIL="잔액부족";
 	public final static String DEPOSIT_SUCCESS="입금성공";
 	public final static String DEPOSIT_FAIL="적합한 입력값이 아님";
-	protected int money;
-	protected int[] num=new int[3];
-	protected String uid,accountType,name,pass,accountNo;
-	Date createDate= new Date();
-	SimpleDateFormat date1 = new SimpleDateFormat("yyyy년 MM월 dd일",Locale.KOREA);
+	protected int money,sum,min;
+	protected String uid,accountType,name,pass,accountNo,CreateDate,result;
 	public String toString() {
+		
 		return String.format("%s\n%s\n아이디 : %s\n패스워드 : %s \n계좌번호 : %s \n이름 : %s \n잔액 : %d 원 \n생성일 : %s ",
-				BANK_NAME,ACCOUNT_TYPE,uid,pass,accountNo,name,money,date1.format(createDate));
+				BANK_NAME,ACCOUNT_TYPE,uid,pass,accountNo,name,money,CreateDate);
 	}
-	public void setNum() {
-		for(int i=0; i<3; i++) {
-			num[i]=(int)(Math.random()*900)+100;
-		}
-		accountNo=num[0]+"-"+num[1]+"-"+num[2];
+	
+	public Account(String name,String uid,String pass) {
+		setAccountNo();
+		setCreateDate();
+		this.name = name;
+		this.uid=uid;
+		this.pass=pass;
+	}
+	public void setSum(int sum) {
+		money+=sum;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setMin(int min) {
+
+	}
+	public int getMin() {
+		return min;
+	}
+	public void setResult() {
+		
+	}
+	public String getResult() {
+		return result;
 	}
 	public void setMoney(int money) {
 		this.money=money;
-	}
-	public void setUid(String uid) {
-		this.uid=uid;
-	}
-	public void setAccountType(String accountType) {
 		
+	}
+	public void setCreateDate() {
+		this.CreateDate=new SimpleDateFormat("yyyy년 MM월 dd일",Locale.KOREA).format( new Date());
+	}
+	
+	public void setAccountType(String accountType) {
 		this.accountType=accountType;
 	}
-	public void setName(String name) {
-		this.name=name;
-	}
+	
 	public void setPass(String pass) {
 		this.pass=pass;
 	}
-	public void setAccountNo(String accountNo) {
-		this.accountNo=accountNo;
+	public void setAccountNo() {
+		int[] num=new int[3];
+		for(int i=0; i<3; i++) {
+			num[i]=(int)(Math.random()*1000);
+		}
+		this.accountNo=num[0]+"-"+num[1]+"-"+num[2];
 	}
 	public int getMoney() {
 		return money;
@@ -72,6 +93,9 @@ public class Account {
 	}
 	public String getAccountNo() {
 		return accountNo;
+	}
+	public String getCreateDate() {
+		return CreateDate;
 	}
 	
 	

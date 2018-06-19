@@ -1,5 +1,5 @@
 package ui;
-import domain.Phone;
+import domain.*;
 import domain.CellPhone;
 import domain.IPhone;
 import domain.GalaxyPhone;
@@ -13,10 +13,11 @@ public class PhoneMain {
 
 	public static void main(String[] args) {
 		Phone pho = new Phone();
-		CellPhone cp = new CellPhone();
+		
+/*		CellPhone cp = new CellPhone();
 		IPhone ip = new IPhone();
 		GalaxyPhone gp = new GalaxyPhone();
-		Butt[] buttons= {
+*/		Butt[] buttons= {
 				Butt.EXIT,Butt.TELEPHONE,Butt.CELLPHONE,Butt.IPhone,Butt.GalaxyPhone
 		};
 		
@@ -31,21 +32,21 @@ public class PhoneMain {
 				pho.setCall(JOptionPane.showInputDialog("말할 내용"));
 				JOptionPane.showMessageDialog(null,pho.toString());break;
 			case CELLPHONE:
-				cp.setName(JOptionPane.showInputDialog("이름"));
-				cp.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				cp.setCall(JOptionPane.showInputDialog("말할 내용"));
-				JOptionPane.showMessageDialog(null,cp.toString());break;
+				pho.setName(JOptionPane.showInputDialog("이름"));
+				pho.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				pho.setCall(JOptionPane.showInputDialog("말할 내용"));
+				JOptionPane.showMessageDialog(null,pho.toString());break;
 			case IPhone:
-				ip.setName(JOptionPane.showInputDialog("이름"));
-				ip.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				ip.setData(JOptionPane.showInputDialog("말할 내용"));
-				JOptionPane.showMessageDialog(null,ip.toString());break;
+				pho.setName(JOptionPane.showInputDialog("이름"));
+				pho.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				((IPhone) pho).setData(JOptionPane.showInputDialog("말할 내용"));
+				JOptionPane.showMessageDialog(null,pho.toString());break;
 			case GalaxyPhone:
-				gp.setName(JOptionPane.showInputDialog("이름"));
-				gp.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				gp.setData(JOptionPane.showInputDialog("말할 내용"));
+				pho.setName(JOptionPane.showInputDialog("이름"));
+				pho.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				((IPhone) pho).setData(JOptionPane.showInputDialog("말할 내용"));
 				
-				JOptionPane.showMessageDialog(null,gp.toString());break;
+				JOptionPane.showMessageDialog(null,pho.toString());break;
 			
 			
 			}
